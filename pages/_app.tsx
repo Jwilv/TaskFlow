@@ -3,18 +3,16 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import { CssBaseline, ThemeProvider, createTheme } from '@mui/material'
+
+import { CssBaseline, ThemeProvider } from '@mui/material'
 import type { AppProps } from 'next/app'
 
-const basictheme = createTheme({
-  palette: {
-    mode : 'dark'
-  }
-});
+import { lightTheme } from '@/themes';
+
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
-    <ThemeProvider theme={basictheme}>
+    <ThemeProvider theme={lightTheme}>
       <CssBaseline />
       <Component {...pageProps} />
     </ThemeProvider>

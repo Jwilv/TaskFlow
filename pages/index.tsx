@@ -1,9 +1,9 @@
-
+import { Typography } from '@mui/material'
 
 export default function HomePage() {
   return (
     <>
-    a
+      <Typography variant='h1' color={'primary'} >Task App</Typography>
     </>
   )
 }
