@@ -2,19 +2,31 @@ import { createTheme } from "@mui/material";
 
 
 export const lightTheme = createTheme({
-    palette: {
-      mode : 'light',
-      background:{
-        default : '#e0e0e0'
-      },
-      primary:{
-        main : '#4a148c',
-      },
-      secondary:{
-        main : '#19857b',
-      },
-      error:{
-          main : '#ff1744',
-      }
+  palette: {
+    mode: 'light',
+    background: {
+      default: '#f0ecfa'
+    },
+    primary: {
+      main: '#ffffff',
+    },
+    secondary: {
+      main: '#d3c7f0',
+    },
+    error: {
+      main: '#ff1744',
     }
-  });
+  },
+
+  components: {
+    MuiAppBar: {
+      defaultProps: { elevation: 0 },
+      styleOverrides: {
+        root: {
+          backgroundColor: '#c4b4eb'
+        }
+      }
+    },
+  },
+
+});
