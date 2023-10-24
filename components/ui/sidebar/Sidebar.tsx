@@ -1,5 +1,6 @@
-import { Box, Drawer, Typography } from "@mui/material"
+import { Box, Drawer, Typography, Divider } from "@mui/material"
 import { Title } from "./components/Title";
+import { ListItems } from "./components/ListItems";
 
 
 export const Sidebar = () => {
@@ -9,8 +10,11 @@ export const Sidebar = () => {
             open={true}
             onClose={() => console.log("cerrando")}
         >
-            <Title />
-
+            <Box sx={{ width: 250 }}>
+                <Title />
+                <ListItems />
+                <Divider />
+            </Box>
         </Drawer>
     );
 }
