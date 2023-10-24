@@ -1,6 +1,6 @@
 import { Box } from '@mui/material'
 import Head from 'next/head'
-import { Navbar } from '../ui';
+import { Navbar, Sidebar } from '../ui';
 
 interface Props {
     children: JSX.Element | JSX.Element[];
@@ -15,6 +15,8 @@ export const Layout = ({ children, title = 'Task App' }: Props) => {
             </Head>
 
             <Navbar /> 
+            <Sidebar /> 
+            
             <Box sx={{ padding: '10px 20px' }}>
                 {children}
             </Box>
