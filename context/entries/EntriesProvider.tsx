@@ -1,4 +1,4 @@
-import { EntriesContext } from "./EntriesContext"
+import { EntriesContext } from "."
 
 interface Props {
     children: JSX.Element | JSX.Element[]
