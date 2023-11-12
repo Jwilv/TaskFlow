@@ -1,4 +1,5 @@
-import { EntriesContext } from "."
+import { useReducer } from "react"
+import { EntriesContext, entriesReducer } from "."
 
 interface Props {
     children: JSX.Element | JSX.Element[]
@@ -13,7 +14,10 @@ const ENTRIES_INITIAL_STATE : EntriesState = {
 }
 
 export const EntriesProvider = ({ children }: Props) => {
-    <EntriesContext.Provider value={{ entries: [] }}>
+
+    const [state, dispatch] = useReducer(entriesReducer, ENTRIES_INITIAL_STATE);
+
+    <EntriesContext.Provider value={{ ...state }}>
         { children }
     </EntriesContext.Provider>
 }
