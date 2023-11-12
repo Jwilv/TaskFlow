@@ -1,12 +1,13 @@
 import { useReducer } from "react"
 import { EntriesContext, entriesReducer } from "."
+import { Entry } from "@/interfaces"
 
 interface Props {
     children: JSX.Element | JSX.Element[]
 }
 
 export interface EntriesState {
-    entries: []
+    entries: Entry[]
 }
 
 const ENTRIES_INITIAL_STATE : EntriesState = {

@@ -1,8 +1,9 @@
+import { Entry } from "@/interfaces";
 import { createContext } from "react";
 
 
 interface EntriesContextProps {
-    entries: []; //todo : falta el tipo de entry
+    entries: Entry[];
 }
 
 export const EntriesContext = createContext( {} as EntriesContextProps) 
