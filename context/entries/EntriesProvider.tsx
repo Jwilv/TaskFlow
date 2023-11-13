@@ -38,7 +38,9 @@ export const EntriesProvider = ({ children }: Props) => {
 
     const [state, dispatch] = useReducer(entriesReducer, ENTRIES_INITIAL_STATE);
 
-    <EntriesContext.Provider value={{ ...state }}>
-        {children}
-    </EntriesContext.Provider>
+    return (
+        <EntriesContext.Provider value={{ ...state }}>
+            {children}
+        </EntriesContext.Provider>
+    );
 }
