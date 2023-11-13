@@ -15,19 +15,19 @@ const ENTRIES_INITIAL_STATE: EntriesState = {
     entries: [
         {
             _id: uuid(),
-            description: 'oreoar  aodas da dasdsa dsad sa dasdasdassdasdas asdasdasda asdadasda',
+            description: 'pending  aodas da dasdsa dsad sa dasdasdassdasdas asdasdasda asdadasda',
             createdAt: Date.now(),
             status: 'pending'
         },
         {
             _id: uuid(),
-            description: 'oreoar  aodas da dasdsa dsad sa dasdasdassdasdas asdasdasda asdadasda',
+            description: 'in-progress  aodas da dasdsa dsad sa dasdasdassdasdas asdasdasda asdadasda',
             createdAt: Date.now() - 1000000,
             status: 'in-progress'
         },
         {
             _id: uuid(),
-            description: 'oreoar  aodas da dasdsa dsad sa dasdasdassdasdas asdasdasda asdadasda',
+            description: 'finished  aodas da dasdsa dsad sa dasdasdassdasdas asdasdasda asdadasda',
             createdAt: Date.now() - 10000,
             status: 'finished'
         },
