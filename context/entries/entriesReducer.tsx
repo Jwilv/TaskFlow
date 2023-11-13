@@ -2,20 +2,20 @@ import { EntriesState } from ".";
 
 type ActionType = | { type: 'Add-Entry' } | { type: 'Update-Entry' } | { type: 'Delete-Entry' }
 
-export const entriesReducer = (state: EntriesState, action: ActionType) => {
+export const entriesReducer = (state: EntriesState, action: ActionType) : EntriesState=> {
 
     switch (action.type) {
-        case 'Add-Entry':
+        // case 'Add-Entry':
 
-            break;
+        //     break;
 
-        case 'Update-Entry':
+        // case 'Update-Entry':
 
-            break;
+        //     break;
 
-        case 'Delete-Entry':
+        // case 'Delete-Entry':
 
-            break;
+        //     break;
 
         default: return state;
     }
