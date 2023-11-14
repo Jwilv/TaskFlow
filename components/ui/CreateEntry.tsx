@@ -1,8 +1,13 @@
 import { Box, TextField, Button } from '@mui/material';
 
 import SaveIcon from '@mui/icons-material/Save';
+import { useContext } from 'react';
+import { UIContext } from '@/context';
 
 export const CreateEntry = () => {
+
+    const { closeAddEntry } = useContext(UIContext)
+
     return (
         <>
             <TextField
@@ -16,6 +21,7 @@ export const CreateEntry = () => {
 
             <Box display={'flex'} justifyContent='space-between'>
                 <Button
+                    onClick={closeAddEntry}
                 >Cancel</Button>
 
                 <Button
