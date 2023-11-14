@@ -1,5 +1,6 @@
 export * from './EntryCard';
 export * from './EntryList';
+export * from './NewEntry';
 export * from './navbar/components';
 export * from './navbar';
 export * from './sidebar/components/Item';
