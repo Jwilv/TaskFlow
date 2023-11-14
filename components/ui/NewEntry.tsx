@@ -1,6 +1,8 @@
-import { Box, Button, TextField } from '@mui/material'
+import { Box } from '@mui/material'
+import { AddEntry } from './AddEntry'
+import { CreateEntry } from './CreateEntry'
 
-import AddIcon from '@mui/icons-material/LibraryAdd';
+
 
 
 
@@ -8,13 +10,9 @@ export const NewEntry = () => {
   return (
     <Box sx={{ marginBottom: 2, paddingX: 1 }}>
 
-      <Button
-      variant='outlined'
-      fullWidth
-      endIcon={<AddIcon />}
-      >
-        Add new entry
-      </Button>
+<AddEntry/> 
+
+<CreateEntry /> 
 
 
 
