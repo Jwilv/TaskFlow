@@ -2,19 +2,19 @@ import { Button } from '@mui/material'
 
 
 import AddIcon from '@mui/icons-material/LibraryAdd';
-import { useContext } from 'react';
-import { UIContext } from '@/context';
 
-export const AddEntry = () => {
+interface Props {
+    onClick: () => void;
+}
 
-    const { openAddEntry } = useContext(UIContext)
+export const AddEntry = ({ onClick }: Props) => {
 
     return (
         <Button
             variant='outlined'
             fullWidth
             endIcon={<AddIcon />}
-            onClick={openAddEntry}
+            onClick={onClick}
         >
             Add new entry
         </Button>

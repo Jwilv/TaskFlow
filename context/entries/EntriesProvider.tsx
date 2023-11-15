@@ -1,7 +1,7 @@
 import { useReducer } from "react"
 import { EntriesContext, entriesReducer } from "."
 import { v4 as uuid } from 'uuid'
-import { Entry } from "@/interfaces"
+import { Entry, EntryStatus } from "@/interfaces"
 
 interface Props {
     children: JSX.Element | JSX.Element[]
@@ -38,12 +38,12 @@ export const EntriesProvider = ({ children }: Props) => {
 
     const [state, dispatch] = useReducer(entriesReducer, ENTRIES_INITIAL_STATE);
 
-    const addNewEntry = (description: string) => {
+    const addNewEntry = (description: string, status : EntryStatus) => {
         const newEntry: Entry = {
             _id: uuid(),
             description,
             createdAt: Date.now(),
-            status: 'pending'
+            status
         }
 
         dispatch({ type: '[Entry] Add-Entry', payload: newEntry })

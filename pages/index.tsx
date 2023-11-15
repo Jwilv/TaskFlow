@@ -10,7 +10,7 @@ export default function HomePage() {
           <Card sx={{ height: 'calc(100vh - 100px)' }}>
             <CardHeader title='pendientes' />
             <CardContent>
-              <NewEntry /> 
+              <NewEntry status='pending'/> 
               <EntryList status='pending'/>
             </CardContent>
           </Card>
@@ -20,6 +20,7 @@ export default function HomePage() {
           <Card sx={{ height: 'calc(100vh - 100px)' }}>
             <CardHeader title='en progreso' />
             <CardContent>
+              <NewEntry status='in-progress' />
               <EntryList status='in-progress' />
             </CardContent>
           </Card>
@@ -29,6 +30,7 @@ export default function HomePage() {
           <Card sx={{ height: 'calc(100vh - 100px)' }}>
             <CardHeader title='terminados' />
             <CardContent>
+              <NewEntry status='finished' />
               <EntryList status='finished' />
             </CardContent>
           </Card>

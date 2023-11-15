@@ -2,26 +2,30 @@ import { Box, TextField, Button } from '@mui/material';
 
 import SaveIcon from '@mui/icons-material/Save';
 import { useContext, useState, ChangeEvent } from 'react';
-import { UIContext } from '@/context';
 import { EntriesContext } from '@/context/entries';
+import { EntryStatus } from '@/interfaces';
 
-export const CreateEntry = () => {
+interface Props {
+    status: EntryStatus;
+    onClickCancel: () => void;
+}
 
-    const { closeAddEntry } = useContext(UIContext)
+export const CreateEntry = ({ status, onClickCancel }: Props) => {
 
     const [inputValue, setInputValue] = useState('');
     const [touched, setTouched] = useState(false);
 
-    const { addNewEntry} = useContext(EntriesContext);
+    const { addNewEntry } = useContext(EntriesContext);
 
     const onChangeTextField = (event: ChangeEvent<HTMLInputElement>) => {
         setInputValue(event.target.value);
     }
-    
+
     const onSave = () => {
+        setTouched(true);
         if (inputValue.length <= 0) return;
-        addNewEntry(inputValue);
-        closeAddEntry();
+        addNewEntry(inputValue, status);
+        onClickCancel();
     }
 
     return (
@@ -36,13 +40,12 @@ export const CreateEntry = () => {
                 helperText={touched && inputValue.length <= 0 && 'Enter a value'}
                 error={touched && inputValue.length <= 0}
                 onChange={onChangeTextField}
-                onBlur={() => setTouched(true)}
                 value={inputValue}
             />
 
             <Box display={'flex'} justifyContent='space-between'>
                 <Button
-                    onClick={closeAddEntry}
+                    onClick={onClickCancel}
                 >Cancel</Button>
 
                 <Button
