@@ -6,11 +6,9 @@ interface ContextProps {
     closeMenuSidebar: () => void;
     openMenuSidebar: () => void;
 
-    //Add entry
-    isAdding: boolean;
-    openAddEntry: () => void;
-    closeAddEntry: () => void;
-
+    //Drag
+    isDragging: boolean;
+    setDragging: (status: boolean) => void;
 }
 
 export const UIContext = createContext({} as ContextProps);

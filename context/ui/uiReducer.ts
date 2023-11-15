@@ -1,7 +1,9 @@
-import { deflate } from "zlib";
 import { UIState } from ".";
 
-type UIActionType = | { type: 'UI-Open Sidebar' } | { type: 'UI-Close Sidebar' | 'UI-Open AddEntry' | 'UI-Close AddEntry' }
+type UIActionType =
+    | { type: 'UI-Open Sidebar' }
+    | { type: 'UI-Close Sidebar' }
+    | { type: 'UI Set-Dragging', payload: boolean; }
 
 export const uiReducer = (state: UIState, action: UIActionType): UIState => {
 
@@ -18,16 +20,10 @@ export const uiReducer = (state: UIState, action: UIActionType): UIState => {
                 openSidebar: false,
             }
 
-        case 'UI-Open AddEntry':
+        case 'UI Set-Dragging':
             return {
                 ...state,
-                isAdding: true,
-            }
-
-        case 'UI-Close AddEntry':
-            return {
-                ...state,
-                isAdding: false,
+                isDragging: action.payload,
             }
 
         default: return state;
