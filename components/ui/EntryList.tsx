@@ -5,6 +5,9 @@ import { EntryCard } from "."
 import { EntryStatus } from "@/interfaces"
 import { useContext, useMemo } from "react"
 import { EntriesContext } from "@/context/entries"
+import { UIContext } from "@/context"
+
+import styles from './entryList.module.css'
 
 interface Props {
     status: EntryStatus
@@ -13,6 +16,8 @@ interface Props {
 export const EntryList = ({ status }: Props) => {
 
     const { entries } = useContext(EntriesContext);
+
+    const { isDragging } = useContext(UIContext);
 
     const entriesByStatus = useMemo(() => entries.filter(entry => entry.status === status), [entries]);
 
@@ -33,8 +38,11 @@ export const EntryList = ({ status }: Props) => {
 
             <Paper
                 sx={{ height: 'calc(100vh - 180px)', backgroundColor: 'transparent', overflow: 'scroll', '::-webkit-scrollbar': { display: 'none' } }}
+                className={ isDragging ? styles.dragging : '' }
             >
-                <List sx={{ opacity: 1 }}>
+                <List 
+                sx={{ opacity: isDragging ? 0.4 : 1 }}
+                >
                     {
                         entriesByStatus.map(entry => (
                             <EntryCard key={entry._id} entry={entry} />
