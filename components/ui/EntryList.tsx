@@ -15,9 +15,9 @@ interface Props {
 
 export const EntryList = ({ status }: Props) => {
 
-    const { entries } = useContext(EntriesContext);
+    const { entries, updateEntry } = useContext(EntriesContext);
 
-    const { isDragging } = useContext(UIContext);
+    const { isDragging, setDragging } = useContext(UIContext);
 
     const entriesByStatus = useMemo(() => entries.filter(entry => entry.status === status), [entries]);
 
@@ -27,7 +27,10 @@ export const EntryList = ({ status }: Props) => {
 
     const onDropEntry = (event: DragEvent<HTMLDivElement>) => {
         const id = event.dataTransfer.getData('text');
-        console.log(id)
+        const entry = entries.find(entrie => entrie._id === id)!;
+        entry.status = status;
+        updateEntry(entry);
+        setDragging(false);
     }
 
     return (
@@ -38,10 +41,10 @@ export const EntryList = ({ status }: Props) => {
 
             <Paper
                 sx={{ height: 'calc(100vh - 180px)', backgroundColor: 'transparent', overflow: 'scroll', '::-webkit-scrollbar': { display: 'none' } }}
-                className={ isDragging ? styles.dragging : '' }
+                className={isDragging ? styles.dragging : ''}
             >
-                <List 
-                sx={{ opacity: isDragging ? 0.4 : 1 }}
+                <List
+                    sx={{ opacity: isDragging ? 0.4 : 1 }}
                 >
                     {
                         entriesByStatus.map(entry => (
