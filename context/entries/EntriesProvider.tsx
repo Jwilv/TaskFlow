@@ -15,19 +15,19 @@ const ENTRIES_INITIAL_STATE: EntriesState = {
     entries: [
         {
             _id: uuid(),
-            description: 'pending  aodas da dasdsa dsad sa dasdasdassdasdas asdasdasda asdadasda',
+            description: 'Test Pending',
             createdAt: Date.now(),
             status: 'pending'
         },
         {
             _id: uuid(),
-            description: 'in-progress  aodas da dasdsa dsad sa dasdasdassdasdas asdasdasda asdadasda',
+            description: 'Test In progress',
             createdAt: Date.now() - 1000000,
             status: 'in-progress'
         },
         {
             _id: uuid(),
-            description: 'finished  aodas da dasdsa dsad sa dasdasdassdasdas asdasdasda asdadasda',
+            description: 'Test Completed',
             createdAt: Date.now() - 10000,
             status: 'finished'
         },

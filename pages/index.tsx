@@ -8,7 +8,7 @@ export default function HomePage() {
       <Grid container spacing={2}>
         <Grid item xs={12} sm={4}>
           <Card sx={{ height: 'calc(100vh - 100px)' }}>
-            <CardHeader title='pendientes' />
+            <CardHeader title='Pending' />
             <CardContent>
               <NewEntry status='pending'/> 
               <EntryList status='pending'/>
@@ -18,7 +18,7 @@ export default function HomePage() {
 
         <Grid item xs={12} sm={4}>
           <Card sx={{ height: 'calc(100vh - 100px)' }}>
-            <CardHeader title='en progreso' />
+            <CardHeader title='In progress' />
             <CardContent>
               <NewEntry status='in-progress' />
               <EntryList status='in-progress' />
@@ -28,7 +28,7 @@ export default function HomePage() {
 
         <Grid item xs={12} sm={4}>
           <Card sx={{ height: 'calc(100vh - 100px)' }}>
-            <CardHeader title='terminados' />
+            <CardHeader title='Completed' />
             <CardContent>
               <NewEntry status='finished' />
               <EntryList status='finished' />
