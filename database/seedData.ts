@@ -9,7 +9,7 @@ interface SeedEntry {
     status: string;
 }
 
-const seedData: SeedData = {
+export const seedData: SeedData = {
     entries: [
         {
             description: 'Test Pending',
