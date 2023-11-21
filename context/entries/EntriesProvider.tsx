@@ -12,26 +12,7 @@ export interface EntriesState {
 }
 
 const ENTRIES_INITIAL_STATE: EntriesState = {
-    entries: [
-        {
-            _id: uuid(),
-            description: 'Test Pending',
-            createdAt: Date.now(),
-            status: 'pending'
-        },
-        {
-            _id: uuid(),
-            description: 'Test In progress',
-            createdAt: Date.now() - 1000000,
-            status: 'in-progress'
-        },
-        {
-            _id: uuid(),
-            description: 'Test Completed',
-            createdAt: Date.now() - 10000,
-            status: 'finished'
-        },
-    ]
+    entries: []
 }
 
 export const EntriesProvider = ({ children }: Props) => {
