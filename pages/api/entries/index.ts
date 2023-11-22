@@ -5,7 +5,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 
 type Data =
     | { ok: boolean, message: string }
-    | { ok: boolean, entries: IEntry[] }
+    | { entries: IEntry[] }
 
 export default async function handler(
     req: NextApiRequest,
@@ -30,7 +30,6 @@ const getEntries = async (res: NextApiResponse<Data>) => {
         await db.disconnect();
 
         res.status(200).json({
-            ok: true,
             entries,
         })
 

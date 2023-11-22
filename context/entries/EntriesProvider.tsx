@@ -1,7 +1,8 @@
-import { useReducer } from "react"
+import { useReducer, useEffect } from "react"
 import { EntriesContext, entriesReducer } from "."
 import { v4 as uuid } from 'uuid'
 import { Entry, EntryStatus } from "@/interfaces"
+import { entriesApi } from "@/apis"
 
 interface Props {
     children: JSX.Element | JSX.Element[]
@@ -19,7 +20,7 @@ export const EntriesProvider = ({ children }: Props) => {
 
     const [state, dispatch] = useReducer(entriesReducer, ENTRIES_INITIAL_STATE);
 
-    const addNewEntry = (description: string, status : EntryStatus) => {
+    const addNewEntry = (description: string, status: EntryStatus) => {
         const newEntry: Entry = {
             _id: uuid(),
             description,
@@ -33,6 +34,16 @@ export const EntriesProvider = ({ children }: Props) => {
     const updateEntry = (entry: Entry) => {
         dispatch({ type: 'Update-Entry', payload: entry })
     }
+
+    const refreshEntries = async () => {
+        const { data } = await entriesApi.get<{ entries: Entry[] }>('/entries');
+        dispatch({ type: "Refresh-Entries", payload: data.entries });
+    }
+
+    useEffect(() => {
+        refreshEntries();
+    }, [])
+
 
     return (
         <EntriesContext.Provider value={{
