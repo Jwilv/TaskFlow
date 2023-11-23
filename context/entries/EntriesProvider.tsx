@@ -20,14 +20,9 @@ export const EntriesProvider = ({ children }: Props) => {
 
     const [state, dispatch] = useReducer(entriesReducer, ENTRIES_INITIAL_STATE);
 
-    const addNewEntry = (description: string, status: EntryStatus) => {
-        const newEntry: Entry = {
-            _id: uuid(),
-            description,
-            createdAt: Date.now(),
-            status
-        }
-
+    const addNewEntry = async (description: string, status: EntryStatus) => {
+        const { data } = await entriesApi.post<{ entry: Entry }>('/entries', { description, status });
+        const { entry: newEntry } = data;
         dispatch({ type: '[Entry] Add-Entry', payload: newEntry })
     }
 
