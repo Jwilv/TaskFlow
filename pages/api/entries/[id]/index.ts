@@ -15,6 +15,7 @@ const updateEntry = async (req: NextApiRequest, res: NextApiResponse) => {
     const entryToUpdate = await Entry.findById(id);
 
     if (!entryToUpdate) {
+        await db.disconnect();
         return res.status(400).json({ message: `No existe una entrada con el id: ${id}` });
     }
 
@@ -34,7 +35,7 @@ const updateEntry = async (req: NextApiRequest, res: NextApiResponse) => {
 
         res.status(200).json(updatedEntry!);
     } catch (error) {
-        res.status(400).json({ message: 'Error al actualizar' });
+        res.status(400).json({ message: 'Error al intentar actualizar' });
     }
 
     await db.disconnect();
