@@ -40,7 +40,7 @@ export const EntryList = ({ status }: Props) => {
         >
 
             <Paper
-                sx={{ height: 'calc(100vh - 180px)', backgroundColor: 'transparent', overflow: 'scroll', '::-webkit-scrollbar': { display: 'none' } }}
+                sx={{ height: 'calc(100vh - 220px)', backgroundColor: 'transparent', overflow: 'scroll', '::-webkit-scrollbar': { display: 'none' } }}
                 className={isDragging ? styles.dragging : ''}
             >
                 <List
