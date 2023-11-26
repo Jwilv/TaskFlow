@@ -6,8 +6,27 @@ import { IEntry } from "@/models/Entry";
 
 type Data = { message: string } | IEntry
 
+const getEntryById = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
-const updateEntry = async (req: NextApiRequest, res: NextApiResponse) => {
+    const { id } = req.query;
+
+    try {
+        await db.connect();
+
+        const entry = await Entry.findById(id);
+        if (!entry) return res.status(400).json({ message: `Error al obtener la entrada con el id : ${id}}` });
+
+        await db.disconnect();
+
+        return res.status(200).json(entry!);
+    } catch (error) {
+        await db.disconnect();
+        return res.status(400).json({ message: 'Error al obtener la entrada' });
+    }
+}
+
+
+const updateEntry = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
     const { id } = req.query;
 
@@ -42,7 +61,7 @@ const updateEntry = async (req: NextApiRequest, res: NextApiResponse) => {
 
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
 
     const { id } = req.query;
 
@@ -51,6 +70,10 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     }
 
     switch (req.method) {
+
+        case 'GET':
+            return getEntryById(req, res);
+
         case 'PUT':
             return updateEntry(req, res);
 
