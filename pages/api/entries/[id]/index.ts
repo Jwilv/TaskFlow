@@ -14,10 +14,13 @@ const getEntryById = async (req: NextApiRequest, res: NextApiResponse<Data>) => 
         await db.connect();
 
         const entry = await Entry.findById(id);
-        if (!entry) return res.status(400).json({ message: `Error al obtener la entrada con el id : ${id}}` });
+        
+        if (!entry) {
+            await db.disconnect();
+            return res.status(400).json({ message: `Error al obtener la entrada con el id : ${id}}` });
+        }
 
         await db.disconnect();
-
         return res.status(200).json(entry!);
     } catch (error) {
         await db.disconnect();
